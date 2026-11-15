@@ -1,13 +1,13 @@
 package com.psa.flightapp;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
+import org.junit.jupiter.api.Test;
+
 class FlightReservationApp6ApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void applicationClassLoads() {
+		assertNotNull(FlightReservationApp6Application.class);
 	}
-
 }

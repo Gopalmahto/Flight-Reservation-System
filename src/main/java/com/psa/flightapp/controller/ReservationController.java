@@ -2,7 +2,8 @@ package com.psa.flightapp.controller;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowire;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -40,7 +41,7 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("/confirmRegistration")
-	public String confirmRegistration(ReservationRequest request,ModelMap modelMap) {
+	public String confirmRegistration(@Valid ReservationRequest request,ModelMap modelMap) {
 		Reservation reservation = reservationService.bookFlight(request);
 		PdfGenerator pdf = new PdfGenerator();
 		pdf.generatePDF(filePath+reservation.getId()+".pdf", reservation.getPassenger().getFirstName(), reservation.getPassenger().getEmail(), reservation.getPassenger().getPhone(), reservation.getFlight().getOperatingAirlines(), reservation.getFlight().getDateOfDeparture(), reservation.getFlight().getDepartureCity(), reservation.getFlight().getArrivalCity());

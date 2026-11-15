@@ -1,13 +1,20 @@
 package com.psa.flightapp.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 public class ReservationUpdateRequest {
-	private long id;
+	@NotNull(message = "Reservation id is required")
+	@Positive(message = "Reservation id must be positive")
+	private Long id;
 	private boolean checkedIn;
+	@Min(value = 0, message = "Number of bags cannot be negative")
 	private int numberOfBags;
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public boolean isCheckedIn() {

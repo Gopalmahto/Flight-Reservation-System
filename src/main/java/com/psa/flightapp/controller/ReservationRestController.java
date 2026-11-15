@@ -2,6 +2,8 @@ package com.psa.flightapp.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +28,7 @@ public class ReservationRestController {
 	}
 	
 	@RequestMapping("/reservation")
-	public Reservation updateReservation(@RequestBody ReservationUpdateRequest request) {
+	public Reservation updateReservation(@Valid @RequestBody ReservationUpdateRequest request) {
 		Optional<Reservation> findById = reservationRepo.findById(request.getId());
 		Reservation reservation = findById.get();
 		reservation.setCheckedIn(request.isCheckedIn());
